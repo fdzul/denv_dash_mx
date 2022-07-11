@@ -1,0 +1,4 @@
+runtime: shiny
+logo: images/cover.jpg
+name: "den_mex_dashboard"
+output_dir: docs
