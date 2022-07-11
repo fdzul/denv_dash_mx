@@ -51,7 +51,7 @@ Column {.tabset}
 
 
 <div style = "display: grid; width: 1px; grid-template-columns: 700px 700px; align-items: start; justify-content: space-between;">
-#### **<span style="color:blue"> Treemap de casos acumulados </span>**
+#### **<span style="color:blue"> Treemap de casos confirmados </span>**
 ```{r treemap_national, out.width="100%", out.height="100%"}
 x  |>
     dplyr::filter(ANO == 2022)  |>
@@ -90,8 +90,8 @@ x  |>
 ```
 
 <div>
-#### **<span style="color:blue"> Casos Acumulado y serotipos </span>**
-```{r,out.width="100%", out.height="100%"}
+#### **<span style="color:blue"> Casos confirmados y serotipos </span>**
+```{r casos_serotipos,out.width="100%", out.height="100%"}
 boldenr::plot_state_serotype(dataset = x, 
                                   year = 2022, 
                                   x_serotype  = 0.5, 
@@ -102,8 +102,8 @@ boldenr::plot_state_serotype(dataset = x,
 </div>
 
 
-#### **<span style="color:blue"> Por semana </span>**
-```{r}
+#### **<span style="color:blue"> Casos confirmados por semana </span>**
+```{r casos_semana}
 heatmap_confirmados(dataset = x, 
                     year = 2022, 
                     size_text = 3, 
@@ -748,7 +748,219 @@ static_bump_map(dataset = x,
 </div>
 
 
-
 </div>
 </body>
 </html>
+
+
+### **<span style="color:#7d9029"> Distribución de Casos </span>**
+
+```{r map_cases}
+# step 1. dengue cases geocoded ####
+load("C:/Users/HOME/OneDrive/proyects/geocoding_mex/2022/9.RData_geocoded/den2022_positivos.RData")
+y <- z[stringr::str_which(z$formatted_address,  " Mexico"),]
+
+# step 2. create the palette ####
+pal <- leaflet::colorBin(palette = fishualize::fish(n = length(unique(y$SEM)), 
+                                                    option = "Hypsypops_rubicundus",
+                                                    end = 1,
+                                                    alpha = .5),
+                         domain = y$SEM,
+                         bins = 10)
+
+y1 <- y  |>
+    dplyr::filter(DENGUE_SER_TRIPLEX == 1)
+
+y2 <- y  |>
+    dplyr::filter(DENGUE_SER_TRIPLEX == 2)
+y3 <- y  |>
+    dplyr::filter(DENGUE_SER_TRIPLEX == 3)
+y4 <- y  |>
+    dplyr::filter(DENGUE_SER_TRIPLEX == 4)
+########################
+
+# step 3. generate maps ####
+l <- leaflet::leaflet(y)  |> 
+    leaflet::addTiles()  |> 
+  leaflet::addCircleMarkers(color = ~pal(SEM),
+                            group = "DENV",
+                            stroke = FALSE, 
+                            opacity = 0.5,
+                            fillOpacity = 0.5)  |>
+    leaflet::addCircleMarkers(data = y1,
+                              group = "Serotipo 1",
+                              color = ~pal(SEM),
+                              stroke = FALSE, 
+                              opacity = 0.5,
+                              fillOpacity = 0.5)  |>
+    leaflet::addCircleMarkers(data = y2,
+                              group = "Serotipo 2",
+                              color = ~pal(SEM),
+                              stroke = FALSE, 
+                              opacity = 0.5,
+                              fillOpacity = 0.5)  |>
+    leaflet::addCircleMarkers(data = y1,
+                              group = "Serotipo 3",
+                              color = ~pal(SEM),
+                              stroke = FALSE, 
+                              opacity = 0.5,
+                              fillOpacity = 0.5)  |>
+    leaflet::addCircleMarkers(data = y4,
+                              group = "Serotipo 4",
+                              color = ~pal(SEM),
+                              stroke = FALSE, 
+                              opacity = 0.5,
+                              fillOpacity = 0.5)  |>
+  #leaflet::addPolylines(data = rgeomex::loc_inegi19_mx,
+   #                     color = "darkblue",
+    #                    label = ~NOMGEO,
+     #                   group = "Localidad",
+      #                  fillOpacity = .7,
+       #                 opacity = .9,
+        #                weight = .5)  |>
+  #leaflet.extras::addSearchFeatures(targetGroups = "Localidad",
+                                 #   options = leaflet.extras::searchFeaturesOptions(zoom #= 14, 
+                                                                                    #openPopup = FALSE))  |>
+  
+    leaflet::addLegend("bottomright", 
+                       group = "legend",
+                       pal = pal, 
+                       values = ~SEM,
+                       title = "Semana Epidemiológica",
+                       opacity = 0.9,
+                       position = "bottomleft")
+
+# Step 4. generate the tiles and provider ###
+esri <- grep("^Esri|CartoDB|OpenStreetMap", 
+             leaflet::providers, 
+             value = TRUE)
+
+for (provider in esri) {
+    l <- l  |> leaflet::addProviderTiles(provider, 
+                                group = provider)
+}
+
+l  |>
+    leaflet::addLayersControl(baseGroups = names(esri),
+                     overlayGroups = c("legend", "DENV", "Serotipo 1",
+                                       "Serotipo 2", "Serotipo 3",
+                                       "Serotipo 4"),
+                     options = leaflet::layersControlOptions(collapsed = TRUE))  |>
+    leaflet::addMiniMap(tiles = esri[[1]], 
+               toggleDisplay = TRUE,
+               position = "bottomleft")  |>
+    htmlwidgets::onRender("
+    function(el, x) {
+      var myMap = this;
+      myMap.on('baselayerchange',
+        function (e) {
+          myMap.minimap.changeLayer(L.tileLayer.provider(e.name));
+        })
+    }")
+
+```
+
+
+### **<span style="color:#7d9029"> Cadenas de Transmisión  </span>**
+
+```{r knox_test}
+library(magrittr)
+# step 1. load the dataset ####
+load("C:/Users/HOME/Dropbox/space_time_analysis/knox_tests/10.results/country/knox_2022_country.RData")
+
+# Step 2. create the list of localities names ###
+name_loc <- as.list(stringr::str_sub(names(knox_2022_country),
+                         start = -0,
+                         end = -7))
+
+# Step 3. create the list of localities ids ###
+cve_edo <- as.list(stringr::str_extract(names(knox_2022_country),
+                                            pattern = "[[:digit:].,]{2}"
+                                            ))
+
+
+# Step 4. make the st_link maps function ####
+source('C:/Users/HOME/OneDrive/proyects/spatial_analysis_dengue/space_time_analysis/knox_test/3.Functions/space_time_link_map_ver2.R')
+st_link_maps <- function(x, y, z){
+    space_time_link_map_ver2(x = x,
+                             locality = y,
+                             cve_edo = z,
+                             maptype = "interactive_map",
+                             facetmap = FALSE)
+}
+
+
+# Step 5. make the st_link maps ####
+knox <- purrr::pmap(.l = list(x = knox_2022_country,
+                           y = name_loc,
+                           z = cve_edo),
+                 .f = st_link_maps)
+
+# step 6. make the function for extract the cases an link ###
+library(sf)
+w  <- purrr::map_df(.x = knox,
+                     .f = function(x){x$st_cases_week})
+st_link_week <- purrr::map_df(.x = knox,
+                           .f = function(x){x$st_link_week})
+
+# Step 6 plot the leaflet map ####
+pal <- leaflet::colorFactor(palette = fishualize::fish(n = length(unique(w$week_factor)),
+                                                       option = "Scarus_hoefleri",
+                                                       direction = -1),
+                            domain = w$week_factor)
+l <- leaflet::leaflet()  |>
+    leaflet::addTiles()  |>
+  #leaflet::addPolylines(data = rgeomex::loc_inegi19_mx,
+   #                     color = "darkblue",
+    #                    label = ~NOMGEO,
+      #                  group = "Localidad",
+          #              fillOpacity = .7,
+              #          opacity = .9,
+                #        weight = .5)  |>
+  #leaflet.extras::addSearchFeatures(targetGroups = "Localidad",
+                                   # options = leaflet.extras::searchFeaturesOptions(zoom = 14, 
+                                                                                    #openPopup = FALSE))  |>
+    leaflet::addPolylines(data = st_link_week,
+                          color = ~pal(week_factor),
+                          weight = 5,
+                          opacity = .8)  |>
+    leaflet::addCircleMarkers(data = w,
+                              radius = 10,
+                              fillColor = ~pal(week_factor),
+                              fillOpacity = .8,
+                              stroke = TRUE,
+                              weight = 5,
+                              color = "black",
+                              opacity = .5)  |>
+    leaflet::addLegend(pal = pal,
+                       values = w$week_factor,
+                       opacity = 1,
+                       title = "Semana",
+                       position = "topright")
+esri <- grep("^Esri|CartoDB|OpenStreetMap", #"^Esri|OpenTopoMap|OpenStreetMap|HERE|CartoDB|NASAGIBS", 
+             leaflet::providers,
+             value = TRUE)
+
+
+for (provider in esri) {
+    l <- l  |> 
+        leaflet::addProviderTiles(provider,
+                                  group = provider)
+}
+
+l  |>
+    leaflet::addLayersControl(baseGroups = names(esri),
+                              options = leaflet::layersControlOptions(collapsed = TRUE))  |>
+    leaflet::addMiniMap(tiles = esri[[1]],
+                        toggleDisplay = TRUE,
+                        position = "bottomleft")  |>
+    htmlwidgets::onRender(" function(el, x) {
+            var myMap = this;
+      myMap.on('baselayerchange',
+        function (e) {
+          myMap.minimap.changeLayer(L.tileLayer.provider(e.name));
+        })
+    }")
+```
+
+> las cadenas de transmisión son actualizadas los lunes
