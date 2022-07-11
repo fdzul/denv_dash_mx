@@ -110,3 +110,645 @@ heatmap_confirmados(dataset = x,
                     EDO = TRUE)
 ```
 
+
+
+
+### **<span style="color:#7d9029"> Bump Maps Municipios </span>**
+
+<html>
+<head>
+<style>
+</style>
+</head>
+<body>
+
+<div >
+  <h2></h2>
+  <p></p>
+  
+<div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
+#### **<span style="color:blue"> Rank Casos Acumulados 2021 </span>**
+```{r bumpmap_national_2021, out.width="100%", out.height="100%"}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+library(dplyr)
+static_bump_map(dataset = x,
+                year = "2021",
+                state = TRUE,
+                size_text_value = 3,
+                size_text = 3,
+                country_text_x = 0.5,
+                country_text_y = 0.8,
+                line_size = 1.5,
+                pal_vir = "viridis")
+```
+
+<div>
+#### **<span style="color:blue"> Rank Casos Acumulados 2022 </span>**
+```{r bumpmap_national_2022, out.width="100%", out.height="100%"}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+library(dplyr)
+static_bump_map(dataset = x,
+                year = "2022",
+                state = TRUE,
+                size_text_value = 3,
+                size_text = 3,
+                country_text_x = 0.5,
+                country_text_y = 0.8,
+                line_size = 1.5,
+                pal_vir = "viridis")
+```
+</div>
+</div>
+
+<div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
+#### **<span style="color:blue"> Rank Casos Acumulado 2021 Estado de México </span>**
+```{r bumpmap_15_2021}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2021",
+                state = FALSE,
+                cve_edo = "15",
+                country_text_x = .01,
+                country_text_y = 0.024,
+                axis_start = 0.4,
+                value_text = 0.37,
+                size_text_value = 4,
+                 line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+
+<div>
+#### **<span style="color:blue"> Rank Casos Acumulados 2022 Estado de México </span>**
+```{r bumpmap_15_2022}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2022",
+                state = FALSE,
+                cve_edo = "15",
+                country_text_x = .01,
+                country_text_y = 0.03,
+                axis_start = 0.4,
+                value_text = 0.36,
+                size_text_value = 4,
+                 line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+</div>
+</div>
+
+<div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
+#### **<span style="color:blue"> Rank Casos Acumulado 2021 Tabasco </span>**
+```{r bumpmap_27_2021}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2021",
+                state = FALSE,
+                cve_edo = "27",
+                axis_start = 3,
+                country_text_y = 0.1,
+                country_text_x = .3,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+
+<div>
+#### **<span style="color:blue"> Rank Casos Acumulados 2022 Tabasco </span>**
+```{r bumpmap_27_2022}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2022",
+                state = FALSE,
+                cve_edo = "27",
+                axis_start = 3,
+                country_text_y = 0.1,
+                country_text_x = .3,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+</div>
+</div>
+
+<div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
+#### **<span style="color:blue"> Rank Casos Acumulado 2021 chiapas </span>**
+```{r bumpmap_07_2021}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2021",
+                state = FALSE,
+                cve_edo = "07",
+                axis_start = 3,
+                country_text_x = .3,
+                country_text_y = 0.1,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+
+<div>
+#### **<span style="color:blue"> Rank Casos Acumulados 2022 Chiapas </span>**
+```{r bumpmap_07_2022}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2022",
+                state = FALSE,
+                cve_edo = "07",
+                axis_start = 3,
+                country_text_x = .3,
+                country_text_y = 0.1,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+</div>
+</div>
+
+<div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
+#### **<span style="color:blue"> Rank Casos Acumulado 2021 Veracruz </span>**
+```{r bumpmap_30_2021}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2021",
+                state = FALSE,
+                cve_edo = "30",
+                axis_start = 1.5,
+                country_text_x = .2,
+                country_text_y = 0.1,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis") #+
+    #ggplot2::coord_sf(xlim = c(-104.8, -101), 
+     #                 ylim = c(18.3, 19.7), 
+      #                expand = FALSE)
+```
+
+<div>
+#### **<span style="color:blue"> Rank Casos Acumulados 2022 Veracruz </span>**
+```{r bumpmap_30_2022}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2022",
+                state = FALSE,
+                cve_edo = "30",
+                axis_start = 1.5,
+                country_text_x = .2,
+                country_text_y = 0.1,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis") # +
+    #ggplot2::coord_sf(xlim = c(-104.8, -101), 
+     #                 ylim = c(18.3, 19.7), 
+      #                expand = FALSE)
+```
+</div>
+</div>
+
+<div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
+#### **<span style="color:blue"> Rank Casos Acumulado 2022 Sinaloa </span>**
+```{r bumpmap_25_2021}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2021",
+                state = FALSE,
+                cve_edo = "25",
+                axis_start = 1,
+                country_text_x = .2,
+                country_text_y = 0.05,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+
+<div>
+#### **<span style="color:blue"> Rank Casos Acumulados 2022 Sinaloa </span>**
+```{r bumpmap_25_2022}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2022",
+                state = FALSE,
+                cve_edo = "25",
+                axis_start = 1,
+                country_text_x = .2,
+                country_text_y = 0.05,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+</div>
+</div>
+
+<div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
+#### **<span style="color:blue"> Rank Casos Acumulado 2022 Oaxaca </span>**
+```{r bumpmap_20_2021}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2021",
+                state = FALSE,
+                cve_edo = "20",
+                axis_start = 1,
+                country_text_x = .1,
+                country_text_y = 0.05,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")  
+```
+
+<div>
+#### **<span style="color:blue"> Rank Casos Acumulados 2022 Oaxaca </span>**
+```{r bumpmap_20_2022}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2022",
+                state = FALSE,
+                cve_edo = "20",
+                axis_start = 1,
+                country_text_x = .1,
+                country_text_y = 0.05,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+</div>
+</div>
+
+
+<div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
+#### **<span style="color:blue"> Rank Casos Acumulado 2021 Guerrero </span>**
+```{r bumpmap_12_2021}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2021",
+                state = FALSE,
+                cve_edo = "12",
+                axis_start = 1,
+                country_text_x = .1,
+                country_text_y = 0.08,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")  
+```
+
+<div>
+#### **<span style="color:blue"> Rank Casos Acumulados 2022 Guerrero </span>**
+```{r bumpmap_12_2022}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2022",
+                state = FALSE,
+                cve_edo = "12",
+                axis_start = 1,
+                country_text_x = .1,
+                country_text_y = 0.08,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+</div>
+</div>
+
+<div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
+#### **<span style="color:blue"> Rank Casos Acumulado 2021 Morelos </span>**
+```{r  bumpmap_17_2021}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2021",
+                state = FALSE,
+                cve_edo = "17",
+                axis_start = 1,
+                country_text_x = .1,
+                country_text_y = 0.08,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+
+<div>
+#### **<span style="color:blue"> Rank Casos Acumulados 2022 Morelos </span>**
+```{r  bumpmap_17_2022}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2022",
+                state = FALSE,
+                cve_edo = "17",
+                axis_start = 1,
+                country_text_x = .1,
+                country_text_y = 0.08,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+</div>
+</div>
+
+<div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
+#### **<span style="color:blue"> Rank Casos Acumulado 2021 Sonora </span>**
+```{r  bumpmap_26_2021}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2021",
+                state = FALSE,
+                cve_edo = "26",
+                axis_start = 1,
+                country_text_x = .1,
+                country_text_y = 0.05,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+
+<div>
+#### **<span style="color:blue"> Rank Casos Acumulados 2022 Sonora </span>**
+```{r  bumpmap_26_2022}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2022",
+                state = FALSE,
+                cve_edo = "26",
+                axis_start = 1,
+                country_text_x = .1,
+                country_text_y = 0.05,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+</div>
+</div>
+
+<div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
+#### **<span style="color:blue"> Rank Casos Acumulado 2021 Michoacán </span>**
+```{r  bumpmap_16_2021}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2021",
+                state = FALSE,
+                cve_edo = "16",
+                axis_start = 1,
+                country_text_x = 0.1,
+                country_text_y = 0.1,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+
+<div>
+#### **<span style="color:blue"> Rank Casos Acumulados 2022 Michoacán </span>**
+```{r  bumpmap_16_2022}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2022",
+                state = FALSE,
+                cve_edo = "16",
+                axis_start = 1,
+                country_text_x = 0.1,
+                country_text_y = 0.1,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+</div>
+</div>
+
+
+<div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
+#### **<span style="color:blue"> Rank Casos Acumulado 2021 Quinatana Roo </span>**
+```{r bumpmap_23_2021}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2021",
+                state = FALSE,
+                cve_edo = "23",
+                axis_start = 1,
+                country_text_x = 0.1,
+                country_text_y = 0.1,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+
+<div>
+#### **<span style="color:blue"> Rank Casos Acumulados 2021 Quintana Roo </span>**
+```{r  bumpmap_23_2022}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2022",
+                state = FALSE,
+                cve_edo = "23",
+                axis_start = 1,
+                country_text_x = 0.1,
+                country_text_y = 0.1,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+</div>
+</div>
+
+
+<div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
+#### **<span style="color:blue"> Rank Casos Acumulado 2021 Cólima </span>**
+```{r bumpmap_06_2021}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2021",
+                state = FALSE,
+                cve_edo = "06",
+                axis_start = 1,
+                country_text_x = 0.1,
+                country_text_y = 0.1,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis") +
+    ggplot2::coord_sf(xlim = c(-104.8, -101), 
+                      ylim = c(18.3, 19.7), 
+                    expand = FALSE)
+```
+
+<div>
+#### **<span style="color:blue"> Rank Casos Acumulados 2021 Cólima </span>**
+```{r bumpmap_06_2022}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2022",
+                state = FALSE,
+                cve_edo = "06",
+                axis_start = 1,
+                country_text_x = 0.1,
+                country_text_y = 0.1,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis") +
+    ggplot2::coord_sf(xlim = c(-104.8, -101), 
+                    ylim = c(18.3, 19.7), 
+                     expand = FALSE)
+```
+</div>
+</div>
+
+
+<div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
+#### **<span style="color:blue"> Rank Casos Acumulado 2021 Jalisco </span>**
+```{r bumpmap_14_2021}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2021",
+                state = FALSE,
+                cve_edo = "14",
+                axis_start = 1,
+                country_text_x = 0.1,
+                country_text_y = 0.1,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+
+<div>
+#### **<span style="color:blue"> Rank Casos Acumulados 2022 Jalisco </span>**
+```{r bumpmap_14_2022}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2022",
+                state = FALSE,
+                cve_edo = "14",
+                axis_start = 1,
+                country_text_x = 0.1,
+                country_text_y = 0.1,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+</div>
+</div>
+
+
+<div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
+#### **<span style="color:blue"> Rank Casos Acumulado 2021 Nayarit </span>**
+```{r bumpmap_18_2021}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2021",
+                state = FALSE,
+                cve_edo = "18",
+                axis_start = 1,
+                country_text_x = 0.1,
+                country_text_y = 0.1,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+
+<div>
+#### **<span style="color:blue"> Rank Casos Acumulados 2022 Nayarit </span>**
+```{r bumpmap_18_2022}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2022",
+                state = FALSE,
+                cve_edo = "18",
+                axis_start = 1,
+                country_text_x = 0.1,
+                country_text_y = 0.1,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+</div>
+</div>
+
+<div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
+#### **<span style="color:blue"> Rank Casos Acumulado 2021 Puebla </span>**
+```{r bumpmap_21_2021}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2021",
+                state = FALSE,
+                cve_edo = "21",
+                axis_start = 1,
+                country_text_x = 0.1,
+                country_text_y = 0.1,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+
+<div>
+#### **<span style="color:blue"> Rank Casos Acumulados 2022 Puebla </span>**
+```{r bumpmap_21_2022}
+source('C:/Users/HOME/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2022",
+                state = FALSE,
+                cve_edo = "21",
+                axis_start = 1,
+                country_text_x = 0.1,
+                country_text_y = 0.1,
+                value_text = .3,
+                size_text_value = 4,
+                line_size = 2,
+                size_text_country = 4,
+                pal_vir = "viridis")
+```
+</div>
+</div>
+
+
+
+</div>
+</body>
+</html>
