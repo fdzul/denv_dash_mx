@@ -859,13 +859,3 @@ l  |>
     }")
 
 ```
-
-
-### **<span style="color:#7d9029"> Cadenas de Transmisión  </span>**
-
-```{r knox_test}
-load("C:/Users/HOME/Dropbox/space_time_analysis/knox_tests/8.RData/transmision_chains_2022.RData")
-map
-```
-
-> las cadenas de transmisión son actualizadas los lunes
