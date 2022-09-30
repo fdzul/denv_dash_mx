@@ -799,7 +799,7 @@ l <- leaflet::leaflet(y)  |>
                               stroke = FALSE, 
                               opacity = 0.5,
                               fillOpacity = 0.5)  |>
-    leaflet::addCircleMarkers(data = y1,
+    leaflet::addCircleMarkers(data = y3,
                               group = "Serotipo 3",
                               color = ~pal(SEM),
                               stroke = FALSE, 
